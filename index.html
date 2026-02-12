@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scisors</title>
+</head>
+<body>
+    <script>
+        let choices = ["rock", "paper", "scissors"];
+        function getHumanChoice(){
+            return prompt("Choose rock, paper, scissors") 
+
+        }
+        function getComputerChoice(){
+            return choices[Math.floor(Math.random() * 3)];
+        };
+
+        let humanScore = 0;
+        let computerScore= 0;
+
+        function playRound(humanChoice, computerChoice){
+            if (humanChoice === computerChoice)
+            console.log("Draw! You gave the same thing")
+            else if(
+                (humanChoice === "rock" && computerChoice === "scissors")||
+                (humanChoice === "paper" && computerChoice === "rock")||
+                (humanChoice === "scissors" && computerChoice === "paper")
+                ){
+                    humanScore++;
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                } else {
+                    computerScore++;
+                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                }
+            
+        };
+
+        
+        
+function playGame() {
+    for (let i = 1; i <= 5; i++) {
+        console.log("Round " + i);
+        
+        const humanSelection = getHumanChoice().toLowerCase();
+        const computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection);
+        
+        console.log(`Score: Human ${humanScore} - Computer ${computerScore}`);
+    }
+
+    if (humanScore > computerScore) {
+        console.log("Congratulations! You won the game!");
+    } else if (humanScore < computerScore) {
+        console.log("Game over! The computer won.");
+    } else {
+        console.log("It's a tie game!");
+    }
+}
+playGame();
+
+
+        
+    </script>
+</body>
+</html>
